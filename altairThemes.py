@@ -33,8 +33,8 @@ def publishTheme():
     return {
         "config": {
             "view": {
-                "height": 80,  # 80 for publishing
-                "width": 100,  # 100 for publishing
+                "height": 80,  # Customize for appropriate size
+                "width": 100,  # Customize for appropriate size
                 "strokeOpacity": 0,  # Despine
                 "strokeWidth": 0.756,
             },
