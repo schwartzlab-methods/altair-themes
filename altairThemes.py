@@ -1,5 +1,5 @@
 # Altair themes
-# By
+# (initally) By
 # Gregory W. Schwartz
 
 '''
@@ -17,7 +17,11 @@ alt.themes.register("publishTheme", altairThemes.publishTheme)
 alt.themes.enable("publishTheme")
 '''
 
+from matplotlib.colors import LinearSegmentedColormap, to_hex, rgb2hex
+from typing import List
 import altair as alt
+import matplotlib.pyplot as plt
+import numpy as np
 
 
 def publishTheme():
@@ -80,3 +84,28 @@ def publishTheme():
             # },
         }
     }
+
+
+def get_colour_scheme(palette_name: str, num_colours: int) -> List[str]:
+    """Extend a colour scheme using colour interpolation.
+
+    By Viet Hoang
+
+    Parameters
+    ----------
+    palette_name: The matplotlib colour scheme name that will be extended.
+    num_colours: The number of colours in the output colour scheme.
+
+    Returns
+    -------
+    New colour scheme containing 'num_colours' of colours. Each colour is a hex
+    colour code.
+
+    """
+    scheme = [rgb2hex(c) for c in plt.get_cmap(palette_name).colors]
+    if len(scheme) >= num_colours:
+        return scheme[:num_colours]
+    else:
+        cmap = LinearSegmentedColormap.from_list("cmap", scheme)
+        extended_scheme = cmap(np.linspace(0, 1, num_colours))
+        return [to_hex(c, keep_alpha=False) for c in extended_scheme]
