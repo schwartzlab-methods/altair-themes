@@ -25,6 +25,8 @@ import numpy as np
 
 
 def publishTheme():
+    """The publish theme, standardizing some sizes."""
+
     # Typography
     font = "Arial"
     labelFont = "Arial"
@@ -37,8 +39,6 @@ def publishTheme():
     return {
         "config": {
             "view": {
-                "height": 80,  # Customize for appropriate size
-                "width": 100,  # Customize for appropriate size
                 "strokeOpacity": 0,  # Despine
                 "strokeWidth": 0.756,
             },
@@ -84,6 +84,14 @@ def publishTheme():
             # },
         }
     }
+
+def publishThemeStandardSize():
+    """The publish theme but with a standard height for single plots."""
+    theme = publishTheme()
+    theme["config"]["view"]["width"] = 100
+    theme["config"]["view"]["height"] = 80
+
+    return theme
 
 
 def get_colour_scheme(palette_name: str, num_colours: int) -> List[str]:
