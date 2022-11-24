@@ -73,6 +73,9 @@ def publishTheme():
                 "titleFontSize": fontSize,
                 "titleFontWeight": "normal",
             },
+            "header": {
+                "titleFontWeight": "normal",
+            }
             # For individual axis
             # "axisX": {
             #     "grid": False,
