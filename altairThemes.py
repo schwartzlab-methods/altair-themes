@@ -57,7 +57,9 @@ def publishTheme():
                 "fontWeight": "normal",
             },
             "legend": {
-                "titleFontWeight": "normal"
+                "titleFontWeight": "normal",
+                "labelLimit": 10000,
+                "titleLimit": 10000,
             },
             "axis": {
                 "domainColor": "#000000",
